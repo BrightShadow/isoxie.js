@@ -7,17 +7,8 @@ const DESTINATION = path.resolve( __dirname, 'dist' );
 module.exports = {
     context: ROOT,
 
-    entry: {
-        'main': './main.ts'
-    },
-    
-    output: {
-        filename: '[name].bundle.js',
-        path: DESTINATION
-    },
-
     resolve: {
-        extensions: ['.ts'/*, '.js'*/],
+        extensions: ['.ts', '.js'],
         modules: [
             ROOT,
             'node_modules'
@@ -26,24 +17,14 @@ module.exports = {
 
     module: {
         rules: [
-            /****************
-            * PRE-LOADERS
-            *****************/
-            // {
-            //     enforce: 'pre',
-            //     test: /\.js$/,
-            //     use: 'source-map-loader'
-            // },
+            // PRE-LOADERS
             {
                 enforce: 'pre',
-                test: /\.ts$/,
-                exclude: /node_modules/,
-                use: 'tslint-loader'
+                test: /\.js$/,
+                use: 'source-map-loader'
             },
 
-            /****************
-            * LOADERS
-            *****************/
+            // LOADERS
             {
                 test: /\.ts$/,
                 exclude: [ /node_modules/ ],
